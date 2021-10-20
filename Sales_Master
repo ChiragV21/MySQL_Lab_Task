@@ -1,0 +1,14 @@
+create TABLE SALES_MASTER
+(
+Sales_no varchar(6),
+Sales_name varchar(20),
+Address varchar(20) NOT NULL,
+City varchar(20),
+State varchar(20),
+PINCODE int(6),
+SAL_AMT decimal(8,2) NOT NULL,
+Tgt_to_get DECIMAL(6,2) NOT NULL ,
+Ytd_sales DECIMAL(6,2) NOT NULL,
+Remark varchar(30),
+PRIMARY KEY (Sales_no)
+);
