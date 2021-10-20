@@ -1,0 +1,21 @@
+create Table product_master
+(Product_no varchar(6),
+Description varchar(20),
+Profit int(10),
+QTY_ON_HAND int(10),
+ORDER_LEVEL int(10),
+SELL_PRICE int(10),
+COST_PRICE int(10),
+PRIMARY KEY(Product_no)
+);
+
+insert into product_master values
+("P00001","1.4 floppies", 5, 100, 20 ,525, 500),
+("P03453","Monitors", 6, 10, 3 ,12000, 11200),
+("P06734","Mouse", 5, 20, 5 ,1050, 500),
+("P07865","1.22 floppies", 5, 100, 20 ,525, 500),
+("P07868","Keyboards", 2, 10, 3 , 3150, 3050),
+("P07885","CD drive", 2.5, 10, 3 ,5250, 5100),
+("P07965","540 HDD", 4, 10, 3 , 8400, 8000),
+("P07975","1.4 Drive", 5, 10, 3 ,1050, 1000),
+("P08865","1.22 Drive", 5, 2, 3 ,1050, 1000);
