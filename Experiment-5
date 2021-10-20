@@ -1,0 +1,103 @@
+create table Client_master(
+Client_no int(10),
+Client_Name varchar(20),
+City varchar(15),
+State varchar(15),
+Pin int(6),
+Balance_due int(20),
+PRIMARY KEY (Client_no)
+);
+
+insert into Client_master values
+(0001,"Ivan","Bombay","Maharastra",400057,15000),
+(0002,"Vandura","Madras","TamilNadu",980001,0),
+(0003,"Pramod","Bombay","Maharastra",400056,5000),
+(0004,"Basu","Bombay","Maharastra",400056,0),
+(0005,"Ravi","Delhi","Null",100001,2000),
+(0006,"Rukmini","Bombay","Maharastra",900050,0);
+
+-- Task-3 AND Task-6
+
+create table product_master
+(Product_no varchar(6),
+Description varchar(20) NOT NULL,
+Profit int(10) NOT NULL,
+QTY_ON_HAND int(10),
+ORDER_LEVEL int(10),
+SELL_PRICE int(10) NOT NULL,
+COST_PRICE int(10) NOT NULL,
+PRIMARY KEY(Product_no),
+CHECK (SELL_PRICE>COST_PRICE)
+);
+
+insert into product_master values
+("P00001","1.4 floppies", 5, 100, 20 ,525, 500),
+("P03453","Monitors", 6, 10, 3 ,12000, 11200),
+("P06734","Mouse", 5, 20, 5 ,1050, 500),
+("P07865","1.22 floppies", 5, 100, 20 ,525, 500),
+("P07868","Keyboards", 20, 10, 3 , 3150, 3050),
+("P07885","CD drive", 25, 10, 3 ,5250, 5100),
+("P07965","540 HDD", 4, 10, 3 , 8400, 8000),
+("P07975","1.4 Drive", 5, 10, 3 ,1050, 1000),
+("P08865","1.22 Drive", 5, 2, 3 ,1050, 1000);
+
+
+create TABLE SALES_MASTER
+(
+Sales_no varchar(6),
+Sales_name varchar(20),
+Address varchar(20) NOT NULL,
+City varchar(20),
+State varchar(20),
+PINCODE int(6),
+SAL_AMT decimal(8,2) NOT NULL,
+Tgt_to_get DECIMAL(6,2) NOT NULL ,
+Ytd_sales DECIMAL(6,2) NOT NULL,
+Remark varchar(30),
+PRIMARY KEY (Sales_no)
+);
+
+create TABLE SALES_ORDER
+(
+s_order_no varchar(6),
+s_order_date date,
+client_no int(10),
+salesman_no varchar(26),
+delivery_type char(1) default 'F',
+billed_yn char(1),
+delivery_date date,
+order_status varchar(10),
+PRIMARY KEY(s_order_no),
+FOREIGN KEY(Client_no) REFERENCES Client_master(Client_no),
+FOREIGN KEY(salesman_no) REFERENCES SALES_MASTER(Sales_no)
+);
+
+create TABLE sales_order_detail
+(
+s_order_no varchar(6),
+product_no varchar(6),
+qty_order int(8),
+qty_disp int(8),
+product_rate decimal(10,2),
+FOREIGN KEY(s_order_no) REFERENCES SALES_ORDER(s_order_no),
+FOREIGN KEY(product_no) REFERENCES product_master(Product_no) 
+);
+
+-- Task-2
+ALTER TABLE Client_master ADD phone_number int(10);
+desc Client_master;
+
+-- Task-4
+
+ALTER TABLE Client_master MODIFY client_no int(15);
+
+-- Task-5
+
+SELECT Product_no,Description from product_master
+WHERE Profit>=20 and Profit<=30;
+
+
+
+
+
+
