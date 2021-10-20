@@ -1,0 +1,14 @@
+create TABLE SALES_ORDER
+(
+s_order_no varchar(6),
+s_order_date date,
+client_no int(10),
+salesman_no varchar(26),
+delivery_type char(1) default 'F',
+billed_yn char(1),
+delivery_date date,
+order_status varchar(10),
+PRIMARY KEY(s_order_no),
+FOREIGN KEY(Client_no) REFERENCES Client_master(Client_no),
+FOREIGN KEY(salesman_no) REFERENCES SALES_MASTER(Sales_no)
+);
