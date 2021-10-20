@@ -1,0 +1,10 @@
+create TABLE sales_order_detail
+(
+s_order_no varchar(6),
+product_no varchar(6),
+qty_order int(8),
+qty_disp int(8),
+product_rate decimal(10,2),
+FOREIGN KEY(s_order_no) REFERENCES SALES_ORDER(s_order_no),
+FOREIGN KEY(product_no) REFERENCES product_master(Product_no) 
+)
